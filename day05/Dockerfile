@@ -1,5 +1,5 @@
-FROM alpine:latest
-COPY . /solution
-WORKDIR /solution
-
-CMD ./solution.sh
+FROM python:3.13-alpine
+WORKDIR /app
+COPY . .
+ENV part=part1
+CMD ["sh", "-c", "python3 ${part}.py"]

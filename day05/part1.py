@@ -19,8 +19,6 @@ for line in second_chunk.splitlines():
         page_numbers_before = page_numbers[:i]
         page_numbers_after = page_numbers[i + 1 :]
         must_be_after = after_dict.get(p_g, [])
-        # print(i, "curr:", p_g, page_numbers_before, page_numbers_after)
-        # print("must_be_after: ", must_be_after)
         if any(elem in page_numbers_before for elem in must_be_after):
             is_right_order = False
             break
@@ -28,12 +26,9 @@ for line in second_chunk.splitlines():
     if is_right_order:
         correct_lines.append(page_numbers)
 
-# print(correct_lines)
-
 sum = 0
 for line in correct_lines:
     middle_index = int(len(line) / 2)
-    # print(middle_index, line[middle_index])
     sum += line[middle_index]
 
 print(sum)
