@@ -30,8 +30,10 @@ if __name__ == "__main__":
                 if pos == second_pos:
                     continue
                 p_x, p_y = (x - s_x, y - s_y)
-                antinode_pos = (x + p_x, y + p_y)
-                if pos_in_map(antinode_pos, width, height):
-                    antinodes_set.add(antinode_pos)
+                multiplier = 0
+                antinode_pos = lambda m: (x + m * p_x, y + m * p_y)
+                while pos_in_map(antinode_pos(multiplier), width, height):
+                    antinodes_set.add(antinode_pos(multiplier))
+                    multiplier += 1
 
     print(len(antinodes_set))
